@@ -41,6 +41,10 @@ void Producto::ingresarCant(int cant){
     this->cant += cant;
 }
 
+int Producto::recuperarCant(){
+    return cant;
+}
+
 void Producto::ingresarPrecio(float precio){
     this->precio = precio;
 }

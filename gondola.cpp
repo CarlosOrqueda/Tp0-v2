@@ -128,10 +128,12 @@ void Gondola::agregarProductoGondola(){
                 cout<<"Ingrese si esta en oferta Si=1 , No=0"<<endl;
                 cin>>oferta;
                 nuevoProducto.ingresarOferta(oferta);
-                cout<<"�Cargar un nuevo producto? Si=1, No=0"<<endl;
+                producto[cantProductos] = nuevoProducto;
+                cantProductos ++;
+                cout<<"¿Cargar un nuevo producto? Si=1, No=0"<<endl;
             }
         }
-        cout<<"�Cargar un nuevo producto? Si=1, No=0"<<endl;
+        cout<<"¿Cargar un nuevo producto? Si=1, No=0"<<endl;
         cin>>opcion;
     }
 }

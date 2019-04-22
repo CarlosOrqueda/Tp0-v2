@@ -21,6 +21,7 @@ class Producto{
         void ingresarCod_b(int);
         int recuperarCod_b();
         void ingresarCant(int);
+        int recuperarCant();
         void ingresarPrecio(float);
         float recuperarPrecio();
         void ingresarOferta(int);

@@ -63,7 +63,7 @@ void Chango::ahorroYTotal(){
     for(int i=0;i<cantProductosEnChango;i++){
         total = total + productoEnChango[i].recuperarPrecio();
         if(productoEnChango[i].recuperarOferta()){
-            ahorro = ahorro + ((productoEnChango[i].recuperarPrecio())*10)/100;
+            ahorro = ahorro + (productoEnChango[i].recuperarCant()*((productoEnChango[i].recuperarPrecio())*10)/100);
         }
     }
     cout<<"Total a pagar: "<<(total-ahorro)<<" Ahorro: "<<ahorro<<endl;
