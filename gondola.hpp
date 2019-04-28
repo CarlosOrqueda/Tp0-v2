@@ -10,11 +10,12 @@ class Gondola{
         int cantProductos;
 
         void cargarGondola(ifstream&);
-        void mostrar();
 
     public:
         Gondola();
+        void mostrar();
         void leer();
+        int recuperarCantProd();
         int buscarPorNombre();
         int buscarPorCodB();
         void modificarPrecio();

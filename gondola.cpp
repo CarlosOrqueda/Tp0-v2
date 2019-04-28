@@ -44,15 +44,18 @@ void Gondola::cargarGondola(ifstream& gondola){
 }
 
 void Gondola::mostrar(){
+    cout << "************************************************\n";
     for (int i = 0; i < cantProductos; i++)
     {
-        cout<<producto[i].recuperarNombre()<<endl;
-        cout<<producto[i].recuperarCod_b()<<endl;
-        cout<<producto[i].recuperarPrecio()<<endl;
+        cout<<i<<" - ";
+        cout<<"Nombre: "<<producto[i].recuperarNombre()<<" - ";
+        cout<<"Codigo de barra: "<<producto[i].recuperarCod_b()<<" - ";
+        cout<<"Precio: "<<producto[i].recuperarPrecio()<<" - ";
         if(producto[i].recuperarOferta()){
             cout<<"En oferta: si"<<endl;
         }else{cout<<"En oferta: no"<<endl;}
     }
+    cout << "************************************************\n";
 }
 
 int Gondola::buscarPorNombre(){
@@ -102,6 +105,9 @@ void Gondola::cantidadProdOferta(){
         if(producto[i].recuperarOferta())
             cant++;}
     cout<<"Hay "<< cant << " productos en oferta"<<endl;
+}
+int Gondola::recuperarCantProd(){
+    return cantProductos;
 }
 
 void Gondola::agregarProductoGondola(){
