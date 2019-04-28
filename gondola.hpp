@@ -22,7 +22,7 @@ class Gondola{
         void cantidadProdOferta();
         void agregarProductoGondola();
         void cargarInventario();
-        Producto* recuperarProducto();
+        Producto* recuperarListaDeProducto();
 };
 
 #endif // GONDOLA_H_INCLUDED

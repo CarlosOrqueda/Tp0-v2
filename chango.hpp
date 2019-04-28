@@ -7,14 +7,15 @@ class Chango{
 
     private:
         Producto* productoEnChango;
-        int cantProductosEnChango;
+        int cantProductos;
 
-        void mostrar();
+        
         void verificarProdChango(int, Gondola);
         void ahorroYTotal();
 
     public:
         Chango();
+        void mostrar();
         void agregarAlChango(Gondola&);
 };
 #endif // CHANGO_H_INCLUDED

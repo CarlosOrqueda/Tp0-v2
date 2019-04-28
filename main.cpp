@@ -26,7 +26,7 @@ int main(){
             case 1:{
                 int pos_nombre = nuevaGondola.buscarPorNombre();
                 if(pos_nombre<50){
-                    Producto* estante = nuevaGondola.recuperarProducto();
+                    Producto* estante = nuevaGondola.recuperarListaDeProducto();
                     cout<<"El producto existe: "<<estante[pos_nombre].recuperarNombre()<<endl;
                     cout<<estante[pos_nombre].recuperarCod_b()<<endl;
                     cout<<estante[pos_nombre].recuperarPrecio()<<endl;
@@ -41,7 +41,7 @@ int main(){
             case 2:{
                 int pos_cod = nuevaGondola.buscarPorCodB();
                 if(pos_cod<50){
-                    Producto* estante = nuevaGondola.recuperarProducto();
+                    Producto* estante = nuevaGondola.recuperarListaDeProducto();
                     cout<<"El producto existe: "<<estante[pos_cod].recuperarNombre()<<endl;
                     cout<<estante[pos_cod].recuperarCod_b()<<endl;
                     cout<<estante[pos_cod].recuperarPrecio()<<endl;
