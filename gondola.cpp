@@ -23,7 +23,6 @@ void Gondola::leer(){
             leer();}
     }else{
         cargarGondola(gondola);}
-    mostrar();
 }
 
 void Gondola::cargarGondola(ifstream& gondola){
@@ -44,7 +43,7 @@ void Gondola::cargarGondola(ifstream& gondola){
 }
 
 void Gondola::mostrar(){
-    cout << "************************************************\n";
+    cout << "********************************************************************\n";
     for (int i = 0; i < cantProductos; i++)
     {
         cout<<i<<" - ";
@@ -55,7 +54,7 @@ void Gondola::mostrar(){
             cout<<"En oferta: si"<<endl;
         }else{cout<<"En oferta: no"<<endl;}
     }
-    cout << "************************************************\n";
+    cout << "********************************************************************\n";
 }
 
 int Gondola::buscarPorNombre(){
