@@ -27,7 +27,7 @@ void Gondola::leer(){
 
 void Gondola::cargarGondola(ifstream& gondola){
     string datoAux;
-    while (!gondola.eof())
+    while (gondola.good())
     {
         getline(gondola,datoAux,',');
         producto[cantProductos].ingresarNombre(datoAux);
@@ -110,36 +110,40 @@ int Gondola::recuperarCantProd(){
 }
 
 void Gondola::agregarProductoGondola(){
-    int opcion =1;
-    while(opcion!=0){
-        Producto nuevoProducto;
-        string nombre;
-        int cod;
-        float precio;
-        int oferta;
-        cout<<"Ingrese nombre"<<endl;
+    int continuar = 0;
+    Producto nuevoProducto;
+    string nombre;
+    int cod;
+    float precio;
+    int oferta;
+    bool esta = false;
+    do{
+        mostrar();
+        cout<<"Ingrese nombre: ";
         cin>>nombre;
         for(int i=0;i<cantProductos;i++){
             if(producto[i].recuperarNombre().compare(nombre)==0){
-                cout<<"El producto existe"<<endl;
-            }else{
-                nuevoProducto.ingresarNombre(nombre);
-                cout<<"Ingrese codigo de barras: ";
-                cin>>cod;
-                nuevoProducto.ingresarCod_b(cod);
-                cout<<"Ingrese precio: ";
-                cin>>precio;
-                nuevoProducto.ingresarPrecio(precio);
-                cout<<"Ingrese si esta en oferta Si=1 , No=0: ";
-                cin>>oferta;
-                nuevoProducto.ingresarOferta(oferta);
-                producto[cantProductos] = nuevoProducto;
-                cantProductos ++;
-            }
+                cout<<"El producto ya existe"<<endl;
+                esta = true;
+            }    
+        }
+        if (!esta){
+            nuevoProducto.ingresarNombre(nombre);
+            cout<<"Ingrese codigo de barras: ";
+            cin>>cod;
+            nuevoProducto.ingresarCod_b(cod);
+            cout<<"Ingrese precio: ";
+            cin>>precio;
+            nuevoProducto.ingresarPrecio(precio);
+            cout<<"Ingrese si esta en oferta Si=1 , No=0: ";
+            cin>>oferta;
+            nuevoProducto.ingresarOferta(oferta);
+            producto[cantProductos] = nuevoProducto;
+            cantProductos ++;
         }
         cout<<"¿Cargar un nuevo producto? Si=1, No=0"<<endl;
-        cin>>opcion;
-    }
+        cin >> continuar;
+    }while (continuar == 1);
 }
 
 void Gondola::cargarInventario(){

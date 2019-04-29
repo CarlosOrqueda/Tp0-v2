@@ -36,7 +36,6 @@ void Chango::agregarAlChango(Gondola& nuevaGondola){
             for(int j = 0; j < cantProductos; j++){
                 if(productoEnChango[j].recuperarNombre() == listaDeProducto[i].recuperarNombre()){
                     productoEnChango[j].ingresarCant(1);
-                    cantProductos++;
                     esta = true;  
                 }
             }
