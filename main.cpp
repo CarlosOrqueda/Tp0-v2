@@ -1,13 +1,13 @@
 #include <iostream>
 #include "gondola.hpp"
 #include "chango.hpp"
-
+#include <fstream>
 using namespace std;
 
 int main(){
-    Gondola nuevaGondola;
+    Gondola nuevaGondola(50,0);
     nuevaGondola.leer();
-    Chango nuevoChango;
+    Chango nuevoChango(50,0);
 
     int opcion=0;
     while(opcion!=8){

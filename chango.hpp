@@ -1,18 +1,15 @@
 #ifndef CHANGO_H_INCLUDED
 #define CHANGO_H_INCLUDED
-
+#include "stock.hpp"
 #include "gondola.hpp"
 
-class Chango{
+class Chango: public Stock{
 
     private:
-        Producto* productoEnChango;
-        int cantProductos;
         void ahorroYTotal();
 
     public:
-        Chango();
-        void mostrar();
-        void agregarAlChango(Gondola&);
+        Chango(int x, int y);
+        void agregarAlChango(Gondola& nuevaGondola);
 };
 #endif // CHANGO_H_INCLUDED

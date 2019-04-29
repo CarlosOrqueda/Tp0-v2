@@ -1,10 +1,14 @@
 #include <iostream>
 #include <string>
 #include "stock.hpp"
-
+#include "producto.hpp"
 using namespace std;
 
-void Stock::mostrar(){
+int Stock::recuperarCantProd(){
+    return cantProductos;
+}
+
+void Stock::mostrar(Producto* producto){
     cout << "********************************************************************\n";
     for (int i = 0; i < cantProductos; i++)
     {
@@ -19,6 +23,16 @@ void Stock::mostrar(){
     cout << "********************************************************************\n";
 }
 
-int Stock::recuperarCantProd(){
-    return cantProductos;
+Stock::Stock(int x, int y){
+    producto = new Producto [x];
+    cantProductos = y;
+}
+
+void Stock::sumarCantProd(int cantProductos){
+    this -> cantProductos += cantProductos;
+}
+
+//Devuelve el vector de 50 objetos tipo Producto
+Producto* Stock::recuperarListaDeProducto(){
+    return producto;
 }

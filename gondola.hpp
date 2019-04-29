@@ -3,19 +3,15 @@
 
 #include <fstream>
 #include "producto.hpp"
+#include "stock.hpp"
 
-class Gondola{
+class Gondola : public Stock{
     private:
-        Producto* producto;
-        int cantProductos;
-
-        void cargarGondola(ifstream&);
+        void cargarGondola(ifstream& gondola);
 
     public:
-        Gondola();
-        void mostrar();
+        Gondola(int x, int y);
         void leer();
-        int recuperarCantProd();
         int buscarPorNombre();
         int buscarPorCodB();
         void modificarPrecio();
@@ -23,7 +19,7 @@ class Gondola{
         void cantidadProdOferta();
         void agregarProductoGondola();
         void cargarInventario();
-        Producto* recuperarListaDeProducto();
+        void mostrarGondola();
 };
 
 #endif // GONDOLA_H_INCLUDED

@@ -2,12 +2,12 @@
 #include <fstream>
 #include <string>
 #include "gondola.hpp"
-
+#include "stock.hpp"
+#include "producto.hpp"
 using namespace std;
 
-Gondola::Gondola(){
-    producto = new Producto [50];
-    cantProductos = 0;
+Gondola::Gondola(int x, int y) : Stock(x,y){
+
 }
 
 void Gondola::leer(){
@@ -26,6 +26,8 @@ void Gondola::leer(){
 }
 
 void Gondola::cargarGondola(ifstream& gondola){
+    Producto* producto = recuperarListaDeProducto();
+    int cantProductos = recuperarCantProd();
     string datoAux;
     while (gondola.good())
     {
@@ -42,23 +44,10 @@ void Gondola::cargarGondola(ifstream& gondola){
     gondola.close();
 }
 
-void Gondola::mostrar(){
-    cout << "********************************************************************\n";
-    for (int i = 0; i < cantProductos; i++)
-    {
-        cout<<i<<" - ";
-        cout<<"Nombre: "<<producto[i].recuperarNombre()<<" - ";
-        cout<<"Codigo de barra: "<<producto[i].recuperarCod_b()<<" - ";
-        cout<<"Precio: "<<producto[i].recuperarPrecio()<<" - ";
-        if(producto[i].recuperarOferta()){
-            cout<<"En oferta: si"<<endl;
-        }else{cout<<"En oferta: no"<<endl;}
-    }
-    cout << "********************************************************************\n";
-}
-
 int Gondola::buscarPorNombre(){
     string nombre;
+    int cantProductos = recuperarCantProd();
+    Producto* producto = recuperarListaDeProducto();
     cout<<"Nombre del producto: ";
     cin>>nombre;
     for(int i=0; i < cantProductos; i++){
@@ -70,6 +59,8 @@ int Gondola::buscarPorNombre(){
 
 int Gondola::buscarPorCodB(){
     string codigo_de_barras;
+    int cantProductos = recuperarCantProd();
+    Producto* producto = recuperarListaDeProducto();
     cout<<"Codigo de barras del producto: ";
     cin>>codigo_de_barras;
     for(int i=0;i<cantProductos;i++){
@@ -82,7 +73,8 @@ int Gondola::buscarPorCodB(){
 void Gondola::modificarPrecio(){
     int pos;
     float n_precio;
-    mostrar();
+    Producto* producto = recuperarListaDeProducto();
+    mostrar(producto);
     pos = buscarPorNombre();
     cout<<"El precio del producto es: "<< producto[pos].recuperarPrecio()<<endl;
     cout<<"Ingrese el nuevo precio: ";
@@ -91,7 +83,9 @@ void Gondola::modificarPrecio(){
 }
 
 void Gondola::quitarProducto(){
-    mostrar();
+    int cantProductos = recuperarCantProd();
+    Producto* producto = recuperarListaDeProducto();
+    mostrar(producto);
     int pos = buscarPorNombre();
     Producto pAux = producto[cantProductos];
     producto[pos] = pAux;
@@ -100,25 +94,26 @@ void Gondola::quitarProducto(){
 
 void Gondola::cantidadProdOferta(){
     int cant = 0;
+    Producto* producto = recuperarListaDeProducto();
+    int cantProductos = recuperarCantProd();
     for(int i = 0; i < cantProductos; i++){
         if(producto[i].recuperarOferta())
             cant++;}
     cout<<"Hay "<< cant << " productos en oferta"<<endl;
 }
-int Gondola::recuperarCantProd(){
-    return cantProductos;
-}
 
 void Gondola::agregarProductoGondola(){
     int continuar = 0;
     Producto nuevoProducto;
+    int cantProductos = recuperarCantProd();
+    Producto* producto = recuperarListaDeProducto();
     string nombre;
     int cod;
     float precio;
     int oferta;
     bool esta = false;
     do{
-        mostrar();
+        mostrar(producto);
         cout<<"Ingrese nombre: ";
         cin>>nombre;
         for(int i=0;i<cantProductos;i++){
@@ -148,6 +143,8 @@ void Gondola::agregarProductoGondola(){
 
 void Gondola::cargarInventario(){
     ofstream salida;
+    Producto* producto = recuperarListaDeProducto();
+    int cantProductos = recuperarCantProd();
     salida.open("gondola.txt");
     if (!salida.is_open()) {
     cout << "Error de apertura"<<endl;
@@ -166,8 +163,4 @@ void Gondola::cargarInventario(){
         }
   }
   salida.close();
-}
-//Devuelve el vector de 50 objetos tipo Producto
-Producto* Gondola::recuperarListaDeProducto(){
-    return producto;
 }
