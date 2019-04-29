@@ -8,9 +8,6 @@ class Chango{
     private:
         Producto* productoEnChango;
         int cantProductos;
-
-        
-        void verificarProdChango(int, Gondola);
         void ahorroYTotal();
 
     public:
