@@ -6,15 +6,16 @@
 #include <string>
 
 class Stock{
-    private:
+    protected:
         Producto* producto;
         int cantProductos;
     public:
-        Stock(int x,int y);
-        void mostrar(Producto* producto);
+        Stock();
+        void mostrar();
         int recuperarCantProd();
         void sumarCantProd(int cantProductos);
         Producto* recuperarListaDeProducto();
+        ~Stock();
 };
 
 #endif //STOCK_H_INCLUDED

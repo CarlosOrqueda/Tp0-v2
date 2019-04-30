@@ -8,7 +8,7 @@ int Stock::recuperarCantProd(){
     return cantProductos;
 }
 
-void Stock::mostrar(Producto* producto){
+void Stock::mostrar(){
     cout << "********************************************************************\n";
     for (int i = 0; i < cantProductos; i++)
     {
@@ -23,9 +23,9 @@ void Stock::mostrar(Producto* producto){
     cout << "********************************************************************\n";
 }
 
-Stock::Stock(int x, int y){
-    producto = new Producto [x];
-    cantProductos = y;
+Stock::Stock(){
+    producto = new Producto [50];
+    cantProductos = 0;
 }
 
 void Stock::sumarCantProd(int cantProductos){
@@ -35,4 +35,7 @@ void Stock::sumarCantProd(int cantProductos){
 //Devuelve el vector de 50 objetos tipo Producto
 Producto* Stock::recuperarListaDeProducto(){
     return producto;
+}
+Stock::~Stock(){
+    delete [] producto;
 }

@@ -4,55 +4,51 @@
 #include <iostream>
 using namespace std;
 
-Chango::Chango(int x, int y) : Stock(x,y){
-    
-}
-
 void Chango::agregarAlChango(Gondola& nuevaGondola){
     Producto* listaDeProducto = nuevaGondola.recuperarListaDeProducto();
     int continuar = 0;
     int i;
     bool esta = false;
-    int cantidadDeProductos = recuperarCantProd();
-    Producto* productoEnChango = recuperarListaDeProducto();
     do{
-    mostrar(listaDeProducto);
+    nuevaGondola.mostrar();
         do{
             cout << "Selecciona un producto: " << endl;
             cin >> i; 
         }while (i >= nuevaGondola.recuperarCantProd());
-        if (cantidadDeProductos == 0){
-            productoEnChango[cantidadDeProductos].ingresarNombre(listaDeProducto[i].recuperarNombre());
-            productoEnChango[cantidadDeProductos].ingresarCod_b(listaDeProducto[i].recuperarCod_b());
-            productoEnChango[cantidadDeProductos].ingresarPrecio(listaDeProducto[i].recuperarPrecio());
+        if (cantProductos == 0){
+
+            producto[cantProductos].ingresarNombre(listaDeProducto[i].recuperarNombre());
+            cout << listaDeProducto[i].recuperarNombre();
+            producto[cantProductos].ingresarCod_b(listaDeProducto[i].recuperarCod_b());
+            producto[cantProductos].ingresarPrecio(listaDeProducto[i].recuperarPrecio());
             bool oferta =  listaDeProducto[i].recuperarOferta();
             if (oferta){
-                productoEnChango[cantidadDeProductos].ingresarOferta(1);
+                producto[cantProductos].ingresarOferta(1);
             }else
-                productoEnChango[cantidadDeProductos].ingresarOferta(0);
-            productoEnChango[cantidadDeProductos].ingresarCant(1);
+                producto[cantProductos].ingresarOferta(0);
+            producto[cantProductos].ingresarCant(1);
             sumarCantProd(1);
         }else{
-            for(int j = 0; j < cantidadDeProductos; j++){
-                if(productoEnChango[j].recuperarNombre() == listaDeProducto[i].recuperarNombre()){
-                    productoEnChango[j].ingresarCant(1);
+            for(int j = 0; j < cantProductos; j++){
+                if(producto[j].recuperarNombre() == listaDeProducto[i].recuperarNombre()){
+                    producto[j].ingresarCant(1);
                     esta = true;  
                 }
             }
             if (!esta){
-                productoEnChango[cantidadDeProductos].ingresarNombre(listaDeProducto[i].recuperarNombre());
-                productoEnChango[cantidadDeProductos].ingresarCod_b(listaDeProducto[i].recuperarCod_b());
-                productoEnChango[cantidadDeProductos].ingresarPrecio(listaDeProducto[i].recuperarPrecio());
+                producto[cantProductos].ingresarNombre(listaDeProducto[i].recuperarNombre());
+                producto[cantProductos].ingresarCod_b(listaDeProducto[i].recuperarCod_b());
+                producto[cantProductos].ingresarPrecio(listaDeProducto[i].recuperarPrecio());
                 bool oferta =  listaDeProducto[i].recuperarOferta();
                 if (oferta){
-                    productoEnChango[cantidadDeProductos].ingresarOferta(1);
+                    producto[cantProductos].ingresarOferta(1);
                 }else
-                    productoEnChango[cantidadDeProductos].ingresarOferta(0);
-                productoEnChango[cantidadDeProductos].ingresarCant(1);
+                    producto[cantProductos].ingresarOferta(0);
+                producto[cantProductos].ingresarCant(1);
                 sumarCantProd(1);
             }
         }
-        mostrar(productoEnChango);
+        mostrar();
         cout << "¿Agregar mas productos? Si=1, No=0" << endl;
         cin >> continuar;
     }while (continuar == 1);
@@ -62,12 +58,12 @@ void Chango::agregarAlChango(Gondola& nuevaGondola){
 void Chango::ahorroYTotal(){
     double total = 0;
     double ahorro = 0;
-    Producto* productoEnChango = recuperarListaDeProducto();
-    int cantidadDeProductos = recuperarCantProd();
-    for(int i=0;i<cantidadDeProductos;i++){
-        total = total + (double)productoEnChango[i].recuperarPrecio()*productoEnChango[i].recuperarCant();
-        if(productoEnChango[i].recuperarOferta()){
-            ahorro = ahorro + (productoEnChango[i].recuperarCant()*((productoEnChango[i].recuperarPrecio())*10.0)/100.0);
+    Producto* producto = recuperarListaDeProducto();
+    int cantProductos = recuperarCantProd();
+    for(int i=0;i<cantProductos;i++){
+        total = total + (double)producto[i].recuperarPrecio()*producto[i].recuperarCant();
+        if(producto[i].recuperarOferta()){
+            ahorro = ahorro + (producto[i].recuperarCant()*((producto[i].recuperarPrecio())*10.0)/100.0);
         }
     }
     cout<<"Total a pagar: "<<(total-ahorro)<<" Ahorro: "<<ahorro<<endl;

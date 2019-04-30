@@ -10,7 +10,6 @@ class Gondola : public Stock{
         void cargarGondola(ifstream& gondola);
 
     public:
-        Gondola(int x, int y);
         void leer();
         int buscarPorNombre();
         int buscarPorCodB();

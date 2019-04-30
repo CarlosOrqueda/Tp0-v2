@@ -9,7 +9,6 @@ class Chango: public Stock{
         void ahorroYTotal();
 
     public:
-        Chango(int x, int y);
         void agregarAlChango(Gondola& nuevaGondola);
 };
 #endif // CHANGO_H_INCLUDED

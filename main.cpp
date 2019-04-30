@@ -5,9 +5,9 @@
 using namespace std;
 
 int main(){
-    Gondola nuevaGondola(50,0);
+    Gondola nuevaGondola; //Gondola unaGondola(50,0);
     nuevaGondola.leer();
-    Chango nuevoChango(50,0);
+    Chango nuevoChango;
 
     int opcion=0;
     while(opcion!=8){
