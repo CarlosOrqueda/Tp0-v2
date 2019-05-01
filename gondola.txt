@@ -3,3 +3,4 @@ pan,2345,50,0
 azucar,3456,60,0
 miel,7894,45,1
 factura,5824,120,0
+pancitonuevamarca,2344,33,1

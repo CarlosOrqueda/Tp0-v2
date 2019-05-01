@@ -9,6 +9,8 @@ class Chango: public Stock{
         void ahorroYTotal();
 
     public:
+        //pre: recibe el objeto Gondola por referencia
+        //post: agrega un producto de gondola al objeto chango 
         void agregarAlChango(Gondola& nuevaGondola);
 };
 #endif // CHANGO_H_INCLUDED
