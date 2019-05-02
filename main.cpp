@@ -14,5 +14,6 @@ int main(){
     {
         nuevoMenu.mostrarMenu(nuevaGondola, nuevoChango);
     }
+    cout<<"este cambio es re piola"<<endl
     return 0;
 }
