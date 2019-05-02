@@ -7,7 +7,7 @@
 
 class Gondola : public Stock{
     private:
-        void cargarGondola(ifstream& gondola);
+        void cargarGondola(ifstream&);
 
     public:
         /**PRE: Clase gondola instanciada correctamente

@@ -37,5 +37,5 @@ Producto* Stock::recuperarListaDeProducto(){
     return producto;
 }
 Stock::~Stock(){
-    delete [] producto;
+    delete []producto;
 }

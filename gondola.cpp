@@ -8,18 +8,15 @@ using namespace std;
 
 
 void Gondola::leer(){
-    int opcion;
     ifstream gondola;
     gondola.open("gondola.txt");
     if (!gondola.is_open()){
         cout<<"Error al abrir el archivo"<<endl;
-        cout<<"Desea crear uno nuevo Si = 1 No = 0"<<endl;
-        cin>>opcion;
-        if (opcion == 1){
-            agregarProductoGondola();
-            leer();}
-    }else{
+        cout<<"Por favor ingrese un producto: "<<endl;
+        agregarProductoGondola();}
+    else{
         cargarGondola(gondola);}
+    gondola.close();
 }
 
 void Gondola::cargarGondola(ifstream& gondola){
@@ -104,6 +101,8 @@ void Gondola::agregarProductoGondola(){
             if(producto[i].recuperarNombre().compare(nombre)==0){
                 cout<<"El producto ya existe"<<endl;
                 esta = true;
+            }else{
+                esta = false;
             }    
         }
         if (!esta){
@@ -129,8 +128,8 @@ void Gondola::cargarInventario(){
     ofstream salida;
     salida.open("gondola.txt");
     if (!salida.is_open()) {
-    cout << "Error de apertura"<<endl;
-    return;
+        cout << "Error de apertura"<<endl;
+        return;
     }
     for (int i = 0; i < cantProductos; i++) {
         salida << producto[i].recuperarNombre();
